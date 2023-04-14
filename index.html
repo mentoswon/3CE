@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3ce</title>
+    <link rel="stylesheet" href="css/3ce.css"/>
+    <script>
+        window.onload = function (){
+            //menu
+            let menuOpen = document.getElementById('open');
+            let menu = document.getElementsByTagName('nav')[0];
+            let body = document.getElementsByTagName('body')[0];
+
+            let menuClose = document.getElementById('menu_close');
+
+            menu.style.display = 'none';
+            menuOpen.onclick = function () {
+                if (menu.style.display == 'none') {
+                    menu.style.display = 'block';
+                    body.classList.add('bg_on');
+                }
+            }
+
+            menuClose.onclick = function(){
+                if(menu.style.display == 'block'){
+                    menu.style.display = 'none';
+                    body.classList.remove('bg_on');
+                }
+            }
+            // 2차메뉴
+            let depth01 = document.getElementsByClassName('depth01');
+            let depth02 = document.getElementsByClassName('depth02');
+
+            //⭐⭐depth02한테 display:none 따로 해줘야됨
+            for(let i = 0; i < depth02.length; i++){
+                depth02[i].style.display = 'none';
+            }
+            
+            for(let i = 0;i < depth01.length;i++) {
+                console.log(depth01[i].children);
+                
+                let depth02Chidren = depth01[i].children[1];
+                
+                depth01[i].onclick = function(){
+                    if(depth02Chidren.style.display == 'none') {
+                        depth02Chidren.style.display = 'block';
+                        depth01[i].style.color = '#E79090';
+                    }else if(depth02Chidren.style.display == 'block'){
+                        depth02Chidren.style.display = 'none';
+                        depth01[i].style.color = '#000000';
+                    }
+                }
+            }
+
+
+
+            //메인비주얼
+            let mainVisual = document.getElementsByClassName('main_visual')[0];
+
+            let mainBtn = mainVisual.getElementsByTagName('button');
+            let mainList = mainVisual.getElementsByClassName('list');
+
+            for(let i = 0; i < mainList.length ; i++){
+                mainBtn[i].onclick = function () {
+                    mainList[0].classList.remove('on');
+                    mainList[1].classList.remove('on');
+                    mainList[2].classList.remove('on');
+
+                    mainList[i].classList.add('on');
+
+                    mainBtn[0].classList.remove('on');
+                    mainBtn[1].classList.remove('on');
+                    mainBtn[2].classList.remove('on');
+
+                    mainBtn[i].classList.add('on');
+                }
+            }
+
+            //best products
+            let best = document.getElementsByClassName('best')[0];
+            let bestTabMenu = best.getElementsByTagName('li');
+            let bestList = best.getElementsByClassName('list');
+
+            for (let i = 0; i < bestTabMenu.length; i++) {
+                bestTabMenu[i].onclick = function (){
+                    bestTabMenu[0].classList.remove('on');
+                    bestTabMenu[1].classList.remove('on');
+                    bestTabMenu[2].classList.remove('on');
+                    bestTabMenu[3].classList.remove('on');
+                    bestTabMenu[4].classList.remove('on');
+
+                    bestTabMenu[i].classList.add('on');
+
+                    bestList[0].classList.remove('on');
+                    bestList[1].classList.remove('on');
+                    bestList[2].classList.remove('on');
+                    bestList[3].classList.remove('on');
+                    bestList[4].classList.remove('on');
+
+                    bestList[i].classList.add('on');
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="inner">
+            <h1>
+                <img src="img/logo_3ce22.png" alt="로고"/>
+            </h1>
+            <div class="menu_icon">
+                <img src="img/search-black.png" alt="검색"/>
+                <img id="open" src="img/icons8-menu-60-black.png" alt="open"/> 
+            </div> <!-- .menu_icon -->
+            <nav>
+                <div id="menu_close">
+                    <img src="img/icon _close_.png" alt="close"/>
+                </div> <!-- .menu_close end -->
+                <ul class="user">
+                    <li><a href="#">Review</a></li> 
+                    <li><a href="#">Help</a></li> 
+                    <li><a href="#">Login</a></li> 
+                    <li><a href="#">Cart</a></li> 
+                </ul> <!-- .user end -->
+                <ul class="gnb">
+                    <li class="depth01">
+                        <div>
+                            <a href="#">WHAT'S NEW</a>
+                        </div>
+                        <ul class="depth02">
+                            <div class="what's new">
+                                <li><a href="#">공식몰 혜택</a></li>
+                                <li><a href="#">공식몰 듀오 세트</a></li>
+                                <li><a href="#">민니의 두번째 수채화 메이크업</a></li>
+                            </div> <!-- .beauty1 end -->
+                        </ul>
+                    </li> <!-- .depth01 end -->
+
+                    <li class="depth01">
+                        <div>
+                            <a href="#">BEAUTY</a>
+                        </div>
+                        <ul class="depth02">
+                            <div class="beauty1">
+                                <li><a href="#">NEW IN</a></li>
+                                <li><a href="#">BEST</a></li>
+                                <li><a href="#">SPECIAL EDITION</a></li>
+                            </div> <!-- .beauty1 end -->
+
+                            <div class="beauty2">
+                                <li><a href="#">페이스</a></li>
+                                <li><a href="#">립</a></li>
+                                <li><a href="#">아이</a></li>
+                                <li><a href="#">치크</a></li>
+                                <li><a href="#">네일</a></li>
+                            </div> <!-- .beauty1 end -->
+
+                            <div class="beauty3">
+                                <li><a href="#">프래그런스&바디</a></li>
+                            </div> <!-- .beauty1 end -->
+
+                            <div class="beauty4">
+                                <li><a href="#">툴</a></li>
+                                <li><a href="#">액세서리</a></li>
+                            </div> <!-- .beauty1 end -->
+                        </ul> <!-- .depth02 end -->
+                        
+                    </li> <!-- .depth01 end -->
+
+                    <li class="depth01">
+                        <div>
+                            <a href="#">FASHION</a>
+                        </div>
+                        <ul class="depth02">
+                            <div class="fasion1">
+                                <li><a href="#">2023 PS COLLECTION</a></li>
+                                <li><a href="#">2022 FW COLLECTION</a></li>
+                                <li><a href="#">2022 PF COLLECTION</a></li>
+                            </div> <!-- .fasion1 end -->
+
+                            <div class="fasion2">
+                                <li><a href="#">NEW IN</a></li>
+                                <li><a href="#">LOOK BOOK</a></li>
+                            </div> <!-- .fasion1 end -->
+
+                            <div class="fasion3">
+                                <li><a href="#">아우터</a></li>
+                                <li><a href="#">탑</a></li>
+                                <li><a href="#">원피스</a></li>
+                                <li><a href="#">팬츠</a></li>
+                                <li><a href="#">백</a></li>
+                                <li><a href="#">슈즈</a></li>
+                                <li><a href="#">액세서리</a></li>
+                            </div> <!-- .fasion1 end -->
+
+                        </ul> <!-- .depth02 end -->
+                    </li> <!-- .depth01 end -->
+
+                    <li class="depth01">
+                        <div>
+                            <a href="#">ABOUT 3CE</a>
+                        </div>
+                    </li> <!-- .depth01 end -->
+                </ul> <!-- .gnb end -->
+            </nav>
+        </div> <!-- .inner end -->
+    </header>
+
+    <main>
+        <section class="main_visual">
+            <div class="list on">
+               <figure>
+                    <img src="img/main_visual1.jpg" alt="메인비주얼1"/>
+                </figure>
+                <p>1 / 3</p>
+            </div> <!-- .list end -->
+
+            <div class="list">
+               <figure>
+                    <img src="img/main_visual2.jpg" alt="메인비주얼2"/>
+                </figure>
+                <p>2 / 3</p>
+            </div> <!-- .list end -->
+
+            <div class="list">
+               <figure>
+                    <img src="img/main_visual3.jpg" alt="메인비주얼3"/>
+                </figure>
+                <p>3 / 3</p>
+            </div> <!-- .list end -->
+
+            <div class="buttons">
+                <button class="on"></button>
+                <button></button>
+                <button></button>
+            </div> <!-- .buttons end -->
+        </section> <!-- .main_visual -->
+
+        <section class="best">
+            <div class="best_menu">
+                <h3>3ce Best Products</h3>
+                <ul>
+                    <li class="on"><a href="#">1 LIP</a></li>
+                    <li><a href="#">2 EYE</a></li>
+                    <li><a href="#">3 FACE</a></li>
+                    <li><a href="#">4 CHEEK</a></li>
+                    <li><a href="#">5 ACC</a></li>
+                </ul>
+            </div> <!-- .best_menu end -->
+
+            
+            <div class="itemgg">
+                <p>view more</p>
+                <div class="list on">
+                    <div class="item">
+                        <figure>
+                            <img src="img/lip1.png" alt="lip1"/>
+                        </figure>
+                        <p>3CE BLUR WATER TINT</p>
+                        <div>
+                            <strong>17,000원</strong>
+                            <div>
+                                <img src="img/icon _heart_.png" alt="하트">
+                                <img src="img/icon _shopping bag outline_.png" alt="장바구니">
+                            </div>
+                        </div>
+                    </div> <!-- .item end -->
+
+                    <div class="item">
+                        <figure>
+                            <img src="img/lip2.png" alt="lip2"/>
+                        </figure>
+                        <p>3CE SOFT MATTE LIPSTICK</p>
+                        <div>
+                            <strong>19,000원</strong>
+                            <div>
+                                <img src="img/icon _heart_.png" alt="하트">
+                                <img src="img/icon _shopping bag outline_.png" alt="장바구니">
+                            </div>
+                        </div>
+                    </div> <!-- .item end -->
+                </div> <!-- .list end 1-->
+
+
+                <div class="list">
+                    <div class="item">
+                        <figure>
+                            <img src="img/eye1.png" alt="eye1"/>
+                        </figure>
+                        <p>3CE MULTI EYE COLOR PALETTE #AUTO FOCUS</p>
+                        <div>
+                            <strong>29,000원</strong>
+                            <div>
+                                <img src="img/icon _heart_.png" alt="하트">
+                                <img src="img/icon _shopping bag outline_.png" alt="장바구니">
+                            </div>
+                        </div>
+                    </div> <!-- .item end -->
+
+                    <div class="item">
+                        <figure>
+                            <img src="img/eye2.png" alt="eye2"/>
+                        </figure>
+                        <p>3CE MULTI EYE COLOR PALETTE #SOME DEF</p>
+                        <div>
+                            <strong>39,000원</strong>
+                            <div>
+                                <img src="img/icon _heart_.png" alt="하트">
+                                <img src="img/icon _shopping bag outline_.png" alt="장바구니">
+                            </div>
+                        </div>
+                    </div> <!-- .item end -->
+                </div> <!-- .list end 2-->
+
+
+                <div class="list ">
+                    <div class="item">
+                        <figure>
+                            <img src="img/face1.png" alt="face1"/>
+                        </figure>
+                        <p>3CE SKIN FIT COVER LIQUID CONCEALER</p>
+                        <div> 
+                            <strong>17,000원</strong>
+                            <div>
+                                <img src="img/icon _heart_.png" alt="하트">
+                                <img src="img/icon _shopping bag outline_.png" alt="장바구니">
+                            </div>
+                        </div>
+                    </div> <!-- .item end -->
+
+                    <div class="item">
+                        <figure>
+                            <img src="img/face2.png" alt="face2"/>
+                        </figure>
+                        <p>3CE WATER MAKE UP BASE</p>
+                        <div>
+                            <strong>25,000원</strong>
+                            <div>
+                                <img src="img/icon _heart_.png" alt="하트">
+                                <img src="img/icon _shopping bag outline_.png" alt="장바구니">
+                            </div>
+                        </div>
+                    </div> <!-- .item end -->
+                </div> <!-- .list end 3 -->
+
+
+                <div class="list">
+                    <div class="item">
+                        <figure>
+                            <img src="img/cheek1.png" alt="cheek1"/>
+                        </figure>
+                        <p>3CE MOOD RECIPE FACE BLUSH #NUDE PEACH</p>
+                        <div>
+                            <strong>18,000원</strong>
+                            <div>
+                                <img src="img/icon _heart_.png" alt="하트">
+                                <img src="img/icon _shopping bag outline_.png" alt="장바구니">
+                            </div>
+                        </div>
+                    </div> <!-- .item end -->
+
+                    <div class="item">
+                        <figure>
+                            <img src="img/cheek2.png" alt="face2"/>
+                        </figure>
+                        <p>3CE MOOD RECIPE FACE BLUSH #MONO PINK</p>
+                        <div>
+                            <strong>18,000원</strong>
+                            <div>
+                                <img src="img/icon _heart_.png" alt="하트">
+                                <img src="img/icon _shopping bag outline_.png" alt="장바구니">
+                            </div>
+                        </div>
+                    </div> <!-- .item end -->
+                </div> <!-- .list end 4-->
+
+
+                <div class="list ">
+                    <div class="item">
+                        <figure>
+                            <img src="img/acc1.png" alt="acc1"/>
+                        </figure>
+                        <p>[3CE X TOILETPAPER]
+                            3CE PADDED SHOULDER</p>
+                        <div>
+                            <strong>30,000원</strong>
+                            <div>
+                                <img src="img/icon _heart_.png" alt="하트">
+                                <img src="img/icon _shopping bag outline_.png" alt="장바구니">
+                            </div>
+                        </div>
+                    </div> <!-- .item end -->
+
+                    <div class="item">
+                        <figure>
+                            <img src="img/acc2.png" alt="acc2"/>
+                        </figure>
+                        <p>3CE PADDED BUCKET BAG</p>
+                        <div>
+                            <strong>19,000원</strong>
+                            <div>
+                                <img src="img/icon _heart_.png" alt="하트">
+                                <img src="img/icon _shopping bag outline_.png" alt="장바구니">
+                            </div>
+                        </div>
+                    </div> <!-- .item end -->
+                </div> <!-- .list end -->
+            </div> <!-- itemgg end -->
+        </section> <!-- .best end -->
+
+        <section class="collection">
+            <h3>2023 PS Collection</h3>
+            <div class="list">
+                <div class="item">
+                    <figure>
+                        <img src="img/ps collection 1.jpg" alt="ps 1">
+                    </figure>
+                    <div class="text">
+                        <p>2023 PS</p>
+                        <h4>포멀딥체크 크롭핏자켓</h4>
+                    </div> <!-- .text end -->
+                </div> <!-- .item end -->
+
+                <div class="item">
+                    <figure>
+                        <img src="img/ps collection 2.jpg" alt="ps 2">
+                    </figure>
+                    <div class="text">
+                        <p>2023 PS</p>
+                        <h4>레이시텍스쳐 스트랩미니원피스</h4>
+                    </div> <!-- .text end -->
+                </div> <!-- .item end -->
+
+                <div class="item">
+                    <figure>
+                        <img src="img/ps collection 3.jpg" alt="ps 3">
+                    </figure>
+                    <div class="text">
+                        <p>2023 PS</p>
+                        <h4>트리플배색 사선골지가디건</h4>
+                    </div> <!-- .text end -->
+                </div> <!-- .item end -->
+
+                <div class="item">
+                    <figure>
+                        <img src="img/ps collection 4.jpg" alt="ps 4">
+                    </figure>
+                    <div class="text">
+                        <p>2023 PS</p>
+                        <h4>잔골지니팅 트임민소매탑</h4>
+                    </div> <!-- .text end -->
+                </div> <!-- .item end -->
+            </div> <!-- .list end -->
+            <p><a href="#">view more</a> </p>
+        </section> <!-- .collection end -->
+
+        <section class="newin">
+            <div class="newheader">
+                <h3>New In</h3>
+                <p><a href="#">view more</a></p>
+            </div> <!-- .newheader -->
+            <div class="list">
+                <div class="item">
+                    <figure>
+                        <img src="img/new in 1.jpg" alt="뉴1"/>
+                        <p>8%</p>
+                    </figure>
+                    <div class="text">
+                        <h4>원버튼루즈핏 니트가디건</h4>
+                        <ul>
+                            <li>64,000원</li>
+                            <li><strong>58,900원</strong></li>
+                        </ul>
+                    </div> <!-- .text end -->
+
+                    <div class="itemicon">
+                        <ul class="color">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul> <!-- .color end -->
+                        <div class="icon">
+                            <img src="img/icon _heart_.png" alt="하트">
+                            <img src="img/icon _shopping bag outline_.png" alt="장바구니">
+                        </div> <!-- .icon end -->
+                    </div> <!-- .itemicon end-->
+                    
+                </div> <!-- .item end -->
+
+                <div class="item">
+                    <figure>
+                        <img src="img/new in 2.jpg" alt="뉴1"/>
+                        <p>8%</p>
+                    </figure>
+                    <div class="text">
+                        <h4>링클셔링핏 슬림롱팬츠</h4>
+                        <ul>
+                            <li>62,000원</li>
+                            <li><strong>57,100원</strong></li>
+                        </ul>
+                    </div> <!-- .text end -->
+
+                    <div class="itemicon">
+                        <ul class="color">
+                            <li></li>
+                            <li></li>
+                        </ul> <!-- .color end -->
+                        <div class="icon">
+                            <img src="img/icon _heart_.png" alt="하트">
+                            <img src="img/icon _shopping bag outline_.png" alt="장바구니">
+                        </div> <!-- .icon end -->
+                    </div> <!-- .itemicon end-->
+                </div> <!-- .item end -->
+
+                <div class="item">
+                    <figure>
+                        <img src="img/new in 3.jpg" alt="뉴1"/>
+                        <p>8%</p>
+                    </figure>
+                    <div class="text">
+                        <h4>배색포인트 집업베스트</h4>
+                        <ul>
+                            <li>48,000원</li>
+                            <li><strong>42,400원</strong></li>
+                        </ul>
+                    </div> <!-- .text end -->
+                    <div class="itemicon">
+                        <ul class="color">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul> <!-- .color end -->
+                        <div class="icon">
+                            <img src="img/icon _heart_.png" alt="하트">
+                            <img src="img/icon _shopping bag outline_.png" alt="장바구니">
+                        </div> <!-- .icon end -->
+                    </div><!-- .itemicon end-->
+                </div> <!-- .item end -->
+
+                <div class="item">
+                    <figure>
+                        <img src="img/new in 4.jpg" alt="뉴1"/>
+                        <p>8%</p>
+                    </figure>
+                    <div class="text">
+                        <h4>빅하트팬던트 스트랩네크리스</h4>
+                        <ul>
+                            <li>20,000원</li>
+                            <li><strong>18,400원</strong></li>
+                        </ul>
+                    </div> <!-- .text end -->
+
+                    <div class="itemicon">
+                        <ul class="color">
+                            <li></li>
+                            <li></li>
+                        </ul> <!-- .color end -->
+                        <div class="icon">
+                            <img src="img/icon _heart_.png" alt="하트">
+                            <img src="img/icon _shopping bag outline_.png" alt="장바구니">
+                        </div> <!-- .icon end -->
+                    </div> <!-- .itemicon end-->
+                </div> <!-- .item end -->
+            </div> <!-- .list end -->
+        </section> <!-- .newin end -->
+    </main>
+
+    <footer>
+        <p>ⓒ 2017. NANDA All rights reserved.</p>
+    </footer>
+</body>
+</html>
